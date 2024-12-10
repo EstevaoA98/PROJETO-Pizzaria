@@ -9,7 +9,7 @@ Funcionalidades Principais
 - Modularidade: Arquitetura organizada com separação de responsabilidades, como formulários e templates reutilizáveis.
   ##
 Tecnologias Utilizadas
-- Frontend: HTML, CSS e Bootstrap para estrutura e estilização.
+- Frontend: PHP, CSS e Bootstrap para estrutura e estilização.
 - Backend: PHP para manipulação e processamento de pedidos.
 - Banco de Dados: MySQL Integração com um banco de dados para armazenar informações de pedidos.
   ##
