@@ -1,6 +1,6 @@
 <?php
 include_once("templates/header.php");
-$dados = include_once("process/pizza.php");
+include_once("process/pizza.php");
 
 ?>
 
