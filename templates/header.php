@@ -43,8 +43,8 @@ if(isset($_SESSION["msg"])){
     </nav>
    </header> 
    <?php if($msg != ""): ?>
-   <div class="alert alert-<?= $status?>">
-    <p><?=$msg?>
+   <div class="alert alert-<?= $status ?>">
+    <p><?= $msg?></p>
     </div>
     <?php endif; ?>
- 
+  

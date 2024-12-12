@@ -33,7 +33,7 @@ include_once("process/pizza.php");
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="sabores">Sabores: (Máximo 3) </label>
+                        <label for="sabores">Sabor: (Máximo 3) </label>
                         <select multiple name="sabores[]" id="sabores" class="form-control">
                         <?php foreach ($sabores as $sabor): ?>
                                 <option value="<?=$sabor["id"]?>"><?=$sabor["nome"]?></option>

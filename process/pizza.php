@@ -10,18 +10,16 @@ if($method === "GET") {
 
 $bordasQuery = $conn->query("SELECT * FROM bordas;");
 
-$bordas = $bordasQuery->fetchall();
+$bordas = $bordasQuery->fetchAll();
 
 $massasQuery = $conn->query("SELECT * FROM massas;");
 
-$massas = $massasQuery->fetchall();
+$massas = $massasQuery->fetchAll();
 
 $saboresQuery = $conn->query("SELECT * FROM sabores;");
 
-$sabores = $saboresQuery->fetchall();
+$sabores = $saboresQuery->fetchAll();
 
-
-//criacao do pedido
 }else if($method === "POST") {
 
     $data = $_POST;
@@ -32,59 +30,45 @@ $sabores = $saboresQuery->fetchall();
 
     // valores de sabores limites
     if(count($sabores) > 3 ) {
-
-        $_SESSION ["msg"] = "Selecione no maximo 3 sabores";
-        $_SESSION ["status"] = "warning"; 
-
-    }
-    else{
-        // borda e massa da pizzav
-        $stmt = $conn->prepare("INSERT INTO pizzas(borda_id, massa_id) VALUES (:borda, :massa) ");
-
-        // fintrando inputs
-        $stmt->bindParam(":borda", $borda, PDO::PARAM_INT);
-        $stmt->bindParam(":massa", $massa, PDO::PARAM_INT);
-
-        $stmt->execute();
-
-        // regastando ultimo id da pizza
-        $pizzaId = $conn-> lastInsertId();
-
-        $stmt = $conn->prepare("INSERT INTO pizza_sabor (pizza_id, sabor_id) VALUES (:pizza, :sabor)");
-        
-        //repeticao ate salvar todos os sabores 
-        foreach($sabores as $sabor) {
-
-            //filtrnado os inputs
-            $stmt->bindParam(":pizza", $pizzaId, PDO::PARAM_INT);
-            $stmt->bindParam(":sabor", $saborId, PDO::PARAM_INT);
-
+        $_SESSION["msg"] = "Selecione no máximo 3 sabores";
+        $_SESSION["status"] = "warning"; 
+    } else {
+        try {
+            // borda e massa da pizza
+            $stmt = $conn->prepare("INSERT INTO pizzas (borda_id, massa_id) VALUES (:borda, :massa)");
+            $stmt->bindParam(":borda", $borda, PDO::PARAM_INT);
+            $stmt->bindParam(":massa", $massa, PDO::PARAM_INT);
             $stmt->execute();
 
+            // resgatando o último ID da pizza
+            $pizzaId = $conn->lastInsertId();
+
+            // adicionando os sabores da pizza
+            $stmt = $conn->prepare("INSERT INTO pizza_sabor (pizza_id, sabor_id) VALUES (:pizza, :sabor)");
+            foreach ($sabores as $sabor) {
+                $stmt->bindParam(":pizza", $pizzaId, PDO::PARAM_INT);
+                $stmt->bindParam(":sabor", $sabor, PDO::PARAM_INT);
+                $stmt->execute();
+            }
+
+            // criando o pedido
+            $stmt = $conn->prepare("INSERT INTO pedidos (pizza_id, status_id) VALUES (:pizza, :status)");
+            $statusId = 1;
+            $stmt->bindParam(":pizza", $pizzaId, PDO::PARAM_INT);
+            $stmt->bindParam(":status", $statusId, PDO::PARAM_INT);
+            $stmt->execute();
+
+            // exibindo mensagem de sucesso
+            $_SESSION["msg"] = "Pedido realizado com sucesso";
+            $_SESSION["status"] = "success"; 
+        } catch (PDOException $e) {
+            // exibindo mensagem de erro
+            echo "Erro ao inserir no banco: " . $e->getMessage();
+            exit;
         }
-
-        // criando o pedido da pizza 
-        $stmt = $conn-> prepare("INSERT INTO pedidos (pizza_id, status_id) VALUES (:pizza, :status)");
-
-        // status -> sempre inicia com, que é a producao
-        $statusId = 1;
-
-        // filtrar inputs
-        $stmt->bindParam(":pizza", $pizzaId, PDO::PARAM_INT);
-        $stmt->bindParam(":status", $statusId, PDO::PARAM_INT);
-
-        $stmt->execute();
-
-        //exibit mensagem de pedido realizar com sucesso
-        $_SESSION["msg"] = "Pedido realizado com sucesso";
-        $_SESSION["status"] = "success"; 
-
-    
     }
-    // retonna para o menu principal
+
+    // redireciona para o menu principal
     header("Location: ..");
-
-
+    exit;
 }
-
-?>
