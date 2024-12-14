@@ -86,7 +86,25 @@ html, body{
     margin-bottom: 0;
 }
 
-
+/*DASHBOARD*/
+.delete-btn, .update-btn {
+    border: none;
+    background-color: transparent;
+}
+.delete-btn i{
+    color:#721c24;
+    font-size:  20px;
+}
+.update-btn i {
+    color: rgb(69, 69, 223); /* Corrigido para usar RGB */
+}
+.update-form{
+    display: flex;
+    flex-direction: row;
+}
+.status-input{
+    width: 65%;
+}
 /*FOOTER*/
 footer{
     position: relative;

@@ -1,5 +1,8 @@
 <?php
+
 include_once("templates/header.php");
+include_once("process/orden.php");
+
 ?>
 <div id="main-conteiner">
     <div class="conteiner">
@@ -11,7 +14,7 @@ include_once("templates/header.php");
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col"><span>Pedido</span> #</th>
+                            <th scope="col"><span>Pedido</span></th>
                             <th scope= "col">Borda</th>
                             <th scope= "col">Massa</th>
                             <th scope= "col">Sabores</th>
@@ -20,19 +23,27 @@ include_once("templates/header.php");
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach ($pizzas as $pizza): ?>
                         <tr>
-                            <td>#1</td>
-                            <td>Cheddar</td>
-                            <td>Catupiry</td>
-                            <td>4 Queijos</td>
+                            <td><?=$pizza["id"]?></td>
+                            <td><?=$pizza["borda"]?></td>
+                            <td><?=$pizza["massa"]?></td>
+                            <td>
+                                <ul>
+                                    <?php foreach($pizza["sabores"] as $sabor): ?>
+                                        <li><?= $sabor;?></li>
+                                    <?php endforeach; ?>
+                                        
+                                </ul>
+                            </td>
                             <td>
                                 <form action="process/orden.php" method= "POST" class="form-group update-form">
-                                    <input type="hidden" name="type" value="upadate">
+                                    <input type="hidden" name="type" value="update">
                                     <input type="hidden" name="id" value="1">
                                     <select name="status" class="form-control status-input">
                                         <option value="">Entrega</option>
                                     </select>
-                                    <button type="submit" class="upadate-btn">
+                                    <button type="submit" class="update-btn">
                                         <i class= "fas fa-sync-alt"></i>
                                     </button>
                                 </form>
@@ -47,6 +58,7 @@ include_once("templates/header.php");
                                 </form>
                             </td>
                         </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
