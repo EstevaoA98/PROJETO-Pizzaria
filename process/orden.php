@@ -114,10 +114,49 @@
             $_SESSION["msg"] = "Pedido removido com sucesso!";
             $_SESSION["status"] = "success";
 
-            // retorna usuario para dashboard
-            header("Location: ../dashboard.php");
         }
-   
-    
+        else if($type === "update") {
+            // Verificando se os dados necessários estão presentes
+            if (isset($_POST["id"]) && isset($_POST["status"]) && !empty($_POST["id"]) && !empty($_POST["status"])) {
+                $pizzaId = $_POST["id"];
+                $statusId = $_POST["status"];
+            
+                try {
+                    // Preparando a query de atualização
+                    $updateQuery = $conn->prepare("UPDATE pedidos SET status_id = :status_id WHERE pizza_id = :pizza_id");
+            
+                    // Vinculando os parâmetros
+                    $updateQuery->bindParam("pizza_id", $pizzaId, PDO::PARAM_INT);
+                    $updateQuery->bindParam("status_id", $statusId, PDO::PARAM_INT);
+            
+                    // Executando a consulta
+                    $updateQuery->execute();
+            
+                    // Definindo a mensagem de sucesso
+                    $_SESSION["msg"] = "Pedido atualizado com sucesso";
+                    $_SESSION["status"] = "success"; 
+                    
+                    // Redirecionando para a página de gerenciamento de pedidos
+                    header("Location: /pizzariasabor/dashboard.php"); 
+                    exit;
+                } catch (PDOException $e) {
+                    // Tratando exceções de banco de dados
+                    $_SESSION["msg"] = "Erro ao atualizar o pedido: " . $e->getMessage();
+                    $_SESSION["status"] = "error";
+                    header("Location: /pizzariasabor/dashboard.php");
+                    exit;
+                }
+            } else {
+                // Caso algum campo esteja faltando
+                $_SESSION["msg"] = "Dados inválidos. Verifique os campos e tente novamente.";
+                $_SESSION["status"] = "error";
+                header("Location: /pizzariasabor/dashboard.php");
+                exit;
+            }
+        }
+        
+
+    // retorna usuario para dashboard
+            header("Location: ../dashboard.php");
     }
 ?>
