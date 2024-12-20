@@ -17,7 +17,6 @@ Objetivo
 - Criar uma experiência simplificada e eficiente para os clientes realizarem pedidos online, com foco em personalização e usabilidade, além de oferecer suporte à gestão de pedidos pela administração.
 
 ##
-
 ---
 
 # Sistema de Gestão de Pedidos para Pizzaria  
