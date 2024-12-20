@@ -19,7 +19,7 @@ if(isset($_SESSION["msg"])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faca seu pedido</title>
+    <title>Faça seu pedido</title>
     <!--  Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!--Font Awesome -->
@@ -36,7 +36,7 @@ if(isset($_SESSION["msg"])){
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a href="index.php" class="nav-link">Peca sua pizza</a>
+                    <a href="index.php" class="nav-link">Peça sua pizza</a>
                 </li>
             </ul>
         </div>

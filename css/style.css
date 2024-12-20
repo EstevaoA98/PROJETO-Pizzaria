@@ -58,12 +58,20 @@ html, body{
 }
 #pizza-form label{
     font-weight: bold;
-
 }
 .btn.btn-primary {
+    margin: 10px;
     background-color: black;
     border-color:black ;
+    
 
+}
+#sabores-container {
+    border: 1px solid #ccc; 
+    padding: 10px; 
+    margin-top: 10px; 
+    border-radius: 5px;
+    background-color: #f9f9f9; 
 }
 
 /*ALERT*/
@@ -107,9 +115,8 @@ html, body{
 }
 /*FOOTER*/
 footer{
-    position: relative;
     width: 100%;
-    height: 175px;
+    height: 165px;
     background-color: black;
     color: #fff;
     display: flex;
@@ -119,3 +126,40 @@ footer{
 
 }
 
+/*RESPONSIVIDADE*/
+@media(max-width:425px){
+#main-banner{
+    background-position-y: 0;
+}
+#main-banner h1 {
+    padding: 10px;
+}
+#main-containner{
+    margin-bottom: 0;
+}
+#main-container .comntainer{
+    padding-bottom: 0;
+}
+.form-group .btn.btn-primary{
+    width: 100%;
+    height: 50px;
+    margin-top: 15px;
+    text-transform: uppercase;
+}
+.table-contanier{
+    padding: 0;
+}
+.table td, .table th{
+    padding: .5rem;
+}
+th span{
+    display: none;
+}
+.table head th:nth-child(5),
+.table head th:nth-child(6),
+.table tbody td:nth-child(5),
+.table tbody td:nth-child(6){
+    display: none;
+}
+
+}
