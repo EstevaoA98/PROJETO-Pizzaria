@@ -1,6 +1,1 @@
-# Ignorar arquivo de configuração de banco de dados
-.env
-$host = '127.0.0.1'; // ou 'localhost'
-$db = 'pizzaria'; // Nome do banco de dados
-$user = 'root'; // Nome de usuário
-$pass = 'Gabriel9112'; // Senha do usuário
+process/conn.php;
