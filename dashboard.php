@@ -46,6 +46,7 @@ include_once("process/orden.php");
                                             <input type="hidden" name="id" value="<?= ($pizza["id"]) ?>">
                                             <select name="status" class="form-control status-input">
                                                 <?php
+                                                // Definindo os status de acodo com o banco de dados
                                                 $status = [
                                                     ["id" => 1, "tipo" => "Produção"],
                                                     ["id" => 2, "tipo" => "Entrega"],

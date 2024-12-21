@@ -51,7 +51,7 @@ include_once("process/pizza.php");
                             </div>
                     </div>
                     <div class="form-group text-center">
-                        <input type="submit" class="btn btn-primary" value="Fazer pedido!">
+                        <input type="submit" class="btn btn-primary" value="Fazer pedido">
                     </div>
                     </form>
                 </div>

@@ -58,9 +58,12 @@ $sabores = $saboresQuery->fetchAll();
             $stmt->bindParam(":status", $statusId, PDO::PARAM_INT);
             $stmt->execute();
 
+            $pedidoId = $conn->lastInsertId();
+
             // exibindo mensagem de sucesso
-            $_SESSION["msg"] = "Pedido realizado com sucesso";
+            $_SESSION["msg"] = "Pedido realizado com sucesso. <br> código do pedido: " . $pedidoId;
             $_SESSION["status"] = "success"; 
+            
         } catch (PDOException $e) {
             // exibindo mensagem de erro
             echo "Erro ao inserir no banco: " . $e->getMessage();
