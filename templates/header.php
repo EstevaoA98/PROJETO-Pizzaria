@@ -30,7 +30,7 @@ if (isset($_SESSION["msg"])) {
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid d-flex justify-content-between align-items-center">
                 <a href="index.php" class="nav-brand">
-                    <img src="img/pizza.png" alt="fazer pedido da pizza" id="brand-logo">
+                    <img src="img/pizzaderretendo.png" alt="fazer pedido da pizza" id="brand-logo">
                 </a>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">

@@ -68,7 +68,7 @@ function getOrderStatus($conn, $pedido_id) {
                 <h2 class="text-center">Digite o código do seu pedido:</h2>
                 <form action="searchOrder.php" method="POST" id="search-form">
                     <div class="form-group mb-3">
-                        <input type="text" name="codigo" id="codigo" class="form-control" placeholder="Digite o código do pedido" required>
+                        <input type="text" name="codigo" id="codigo" class="text-center form-control" placeholder="Digite o código do pedido" required>
                     </div>
                     <div class="form-group text-center">
                         <input type="hidden" name="type" value="search">

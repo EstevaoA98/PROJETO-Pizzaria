@@ -8,7 +8,7 @@ html, body{
     width: 60px;
 }
 .navbar.navbar-expand-lg{
-    background-color:black;
+    background-color:orangered;
     font-weight: bold;
 }
 
@@ -25,7 +25,7 @@ html, body{
 
 /*HOME*/
 #main-banner{
-    background-image: url("../img/pizza.png");
+    background-image: url("../img/pizzaHome.webp");
     height:300px;
     background-position: center;
     background-size: cover;
@@ -37,12 +37,12 @@ html, body{
 }
 #main-banner h1{
     color: #fff;
-    background-color: black;
+    background-color: orangered;
     text-align: center;
-    padding: 30px;
+    padding: 15px;
     text-transform: uppercase;
-    width: 500px;
-    font-size: 40px;
+    width: auto;
+    font-size: 30px;
     border-radius: 15px;
     
 }
@@ -70,8 +70,8 @@ html, body{
 }
 .btn.btn-primary {
     margin: 10px;
-    background-color: black;
-    border-color:black ;
+    background-color: red;
+    border-color:red ;
     
 
 }
@@ -112,7 +112,7 @@ html, body{
     padding: 20px;
     font-size: 18px;
     text-align: center;
-    border: 1px solid black;
+    border: 1px solid orangered;
     background-color:transparent;
 }
 .alert-custom-searchNo {
@@ -129,7 +129,7 @@ html, body{
 }
 /*SEARCHORDER*/
 #main-banner2{
-    background-image: url("../img/pizza.png");
+    background-image: url("../img/pizzaHome.webp");
     height: 300px;
     background-position: center;
     background-size: cover;
@@ -141,12 +141,13 @@ html, body{
 }
 #main-banner2 h1{
     color: #fff;
-    background-color: black;
+    background-color: orangered;
     text-align:center;
-    padding: 30px;
+    padding: 15px;
     border-radius: 15px;
-    font-size: 40px;
+    font-size: 30px;
     text-transform: uppercase;
+    width: auto;
     
     
 }
@@ -157,7 +158,7 @@ html, body{
 }
 .main-banner h1{
     color: #fff;
-    background-color: black;
+    background-color: orangered;
     text-align: center;
     padding: 30px;
     text-transform: uppercase;
@@ -166,8 +167,8 @@ html, body{
 }
 
 .btn.btn-primary{
-    background-color: black;
-    border-color: black;
+    background-color: orangered;
+    border-color: orangered;
     margin-top: 10px;
     text-transform: uppercase;
 }
@@ -204,7 +205,7 @@ html, body{
 footer{
     width: 100%;
     height: 165px;
-    background-color: black;
+    background-color: orangered;
     color: #fff;
     display: flex;
     align-items: center;
