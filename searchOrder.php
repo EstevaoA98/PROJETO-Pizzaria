@@ -10,6 +10,7 @@ error_reporting(E_ALL);
 $status = null; 
 $tipo_pedido = null; 
 $status_id = null;
+$pedido_nao_encontrado = false; 
 
 if (isset($_POST['codigo'])) {
     $order_id = $_POST['codigo'];
@@ -19,7 +20,7 @@ if (isset($_POST['codigo'])) {
         $tipo_pedido = $result['tipo_pedido'];
         $status_id = $result['status_id'];
     } else {
-        $status = $result;
+        $pedido_nao_encontrado = true;
     }
 }
 
@@ -42,7 +43,7 @@ function getOrderStatus($conn, $pedido_id) {
             'status_id' => $result['status_id'] 
         ];
     } else {
-        return "Pedido não encontrado.";
+        return false;
     }
 }
 ?>
@@ -54,6 +55,8 @@ function getOrderStatus($conn, $pedido_id) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Localizar Pedido</title>
     <link rel="stylesheet" href="path/to/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css"> 
+   
 </head>
 <body>
     <div id="main-banner2" class="text-center bg-light py-5">
@@ -86,6 +89,11 @@ function getOrderStatus($conn, $pedido_id) {
                                 <img src="img/concluido.png" alt="Pedido concluído" id="brand-logo">
                             <?php endif; ?>
                         <?php endif; ?>
+                    </div>
+                <?php elseif ($pedido_nao_encontrado): ?>
+                    <div class="alert-custom-searchNo text-center">
+                        <p>Pedido de "<?= htmlspecialchars($order_id) ?>" Pedido não localizado, verifique o código.</p>
+                        <img src="img/naoEncontrado.png" alt="nao encontrado" id="brand-logo">
                     </div>
                 <?php endif; ?>
             </div>

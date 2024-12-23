@@ -24,7 +24,7 @@ include_once("process/orden.php");
                         </tr>
                     </thead>
                     <tbody>
-                    
+                        
                         <?php if (!empty($pizzas) && is_array($pizzas)): ?>
                             <?php foreach ($pizzas as $pizza): ?>
                                 <tr>
