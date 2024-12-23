@@ -73,7 +73,7 @@ function getOrderStatus($conn, $pedido_id) {
                     </div>
                 </form>
                 <?php if ($tipo_pedido !== null): ?>
-                    <div class="alert alert-info text-center mt-4">
+                    <div class="alert-custom text-center">
                         <p>Número do Pedido: <?= htmlspecialchars($tipo_pedido) ?></p>
                         <?php if ($status !== null): ?>
                             <p>Status do Pedido: <?= htmlspecialchars($status) ?></p>

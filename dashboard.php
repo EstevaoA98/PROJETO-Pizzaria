@@ -20,7 +20,7 @@ include_once("process/orden.php");
                             <th scope="col">Sabores</th>
                             <th scope="col">Tamanho</th>
                             <th scope="col">Status</th>
-                            <th scope="col">Ações</th>
+                            <th scope="col">Deletar</th>
                         </tr>
                     </thead>
                     <tbody>
