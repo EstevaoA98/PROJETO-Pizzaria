@@ -16,12 +16,12 @@ include_once("process/pizza.php");
                     <div class="col-md-12">
                         <h2 class="text-center">Monte sua pizza:</h2>
                         <form action="process/pizza.php" method="POST" id="pizza-form">
-                            <div class="form-group mb-3">
-                                <label for="borda">Borda:</label>
-                                <select name="borda" id="borda" class="form-control">
-                                    <option value="">Selecione a borda</option>
-                                    <?php foreach ($bordas as $borda): ?>
-                                        <option value="<?= $borda["id"] ?>"><?= $borda["tipo"] ?></option>
+                             <div class="form-group mb-3">
+                                <label for="borda">Tamanho:</label>
+                                <select name="tamanho" id="tamanho" class="form-control">
+                                    <option value="">Selecione o tamanho</option>
+                                    <?php foreach ($tamanhos as $tamanho): ?>
+                                        <option value="<?= $tamanho["id"] ?>"><?= $tamanho["tipo"] ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
@@ -34,6 +34,16 @@ include_once("process/pizza.php");
                                     <?php endforeach; ?>
                                 </select>
                             </div>
+                            <div class="form-group mb-3">
+                                <label for="borda">Borda:</label>
+                                <select name="borda" id="borda" class="form-control">
+                                    <option value="">Selecione a borda</option>
+                                    <?php foreach ($bordas as $borda): ?>
+                                        <option value="<?= $borda["id"] ?>"><?= $borda["tipo"] ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            
                             <div class="form-group">
                                 <label for="sabores">Sabor: (Máximo 3) </label>
                                 <div id="sabores-container">

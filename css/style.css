@@ -92,17 +92,17 @@ html, body{
     font-weight: bold;
     padding: 20px;
     font-size: 18px;
+    text-align: center;
 }
 .alert.alert-success{
     border: 2px solid;
-    text-align: left;
 }
 .alert.alert-warnig{
-    text-align: left;
     border:2px solid;
 }
 .alert p {
     margin-bottom: 0;
+    text-align: center;
 }
 /*SEARCHORDER*/
 #main-banner2{
@@ -164,7 +164,7 @@ html, body{
     font-size:  20px;
 }
 .update-btn i {
-    color: rgb(69, 69, 223); /* Corrigido para usar RGB */
+    color: rgb(69, 69, 223); 
 }
 .update-form{
     display: flex;

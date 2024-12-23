@@ -18,11 +18,13 @@ include_once("process/orden.php");
                             <th scope="col">Borda</th>
                             <th scope="col">Massa</th>
                             <th scope="col">Sabores</th>
+                            <th scope="col">Tamanho</th>
                             <th scope="col">Status</th>
                             <th scope="col">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
+                    
                         <?php if (!empty($pizzas) && is_array($pizzas)): ?>
                             <?php foreach ($pizzas as $pizza): ?>
                                 <tr>
@@ -40,6 +42,9 @@ include_once("process/orden.php");
                                             <?php endif; ?>
                                         </ul>
                                     </td>
+                                    
+                                    <td><?= ($pizza)["tamanho"]?></td>
+
                                     <td>
                                         <form action="process/orden.php" method="POST" class="form-group update-form">
                                             <input type="hidden" name="type" value="update">

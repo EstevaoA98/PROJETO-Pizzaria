@@ -9,6 +9,7 @@ error_reporting(E_ALL);
 
 $status = null; 
 $tipo_pedido = null; 
+$status_id = null;
 
 if (isset($_POST['codigo'])) {
     $order_id = $_POST['codigo'];
@@ -16,6 +17,7 @@ if (isset($_POST['codigo'])) {
     if (is_array($result)) {
         $status = $result['status'];
         $tipo_pedido = $result['tipo_pedido'];
+        $status_id = $result['status_id'];
     } else {
         $status = $result;
     }
@@ -27,15 +29,17 @@ function getOrderStatus($conn, $pedido_id) {
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     
+    // Verifica se o pedido foi encontrado
     if ($result) {
         $status_map = [
             1 => "Em produção",
-            2 => "Saindo para entrega",
-            3 => "Pedido concluído"
+            2 => "Rota de entrega",
+            3 => "Pedido entregue"
         ];
         return [
             'status' => $status_map[$result['status_id']] ?? "Status desconhecido",
-            'tipo_pedido' => $result['pizza_id']
+            'tipo_pedido' => $result['pizza_id'],
+            'status_id' => $result['status_id'] 
         ];
     } else {
         return "Pedido não encontrado.";
@@ -70,9 +74,17 @@ function getOrderStatus($conn, $pedido_id) {
                 </form>
                 <?php if ($tipo_pedido !== null): ?>
                     <div class="alert alert-info text-center mt-4">
-                    <p>Número id do Pedido: <?= htmlspecialchars($tipo_pedido) ?></p>
+                        <p>Número do Pedido: <?= htmlspecialchars($tipo_pedido) ?></p>
                         <?php if ($status !== null): ?>
                             <p>Status do Pedido: <?= htmlspecialchars($status) ?></p>
+                            
+                            <?php if ($status_id == 1): ?>
+                                <img src="img/preparapandpPizza.png" alt="Em produção" id="brand-logo">
+                            <?php elseif ($status_id == 2): ?>
+                                <img src="img/entregaPizza.png" alt="Saindo para entrega" id="brand-logo">
+                            <?php elseif ($status_id == 3): ?>
+                                <img src="img/concluido.png" alt="Pedido concluído" id="brand-logo">
+                            <?php endif; ?>
                         <?php endif; ?>
                     </div>
                 <?php endif; ?>

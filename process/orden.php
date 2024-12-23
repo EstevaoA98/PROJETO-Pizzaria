@@ -45,7 +45,19 @@
 
             $pizza["borda"] = $bordaData["tipo"];
 
-            // resgatando a borda
+            // resgatando a tamanho
+            $tamanhoQuery = $conn->prepare("SELECT * FROM Tamanhos WHERE id = :tamanho_id");
+
+            $tamanhoQuery->bindParam(":tamanho_id",$pizzaData["tamanho_id"]);
+
+            $tamanhoQuery->execute();
+
+            $tamanhoData = $tamanhoQuery->fetch(PDO::FETCH_ASSOC);
+
+            if ($tamanhoData) {
+                $pizza["tamanho"] = $tamanhoData["tipo"]; // Corrigido para usar o valor correto
+            } 
+            // resgatando a massa
             $massaQuery = $conn->prepare("SELECT * FROM massas WHERE id = :massa_id");
 
             $massaQuery->bindParam(":massa_id",$pizzaData["massa_id"]);

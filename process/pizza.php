@@ -12,6 +12,10 @@ $bordasQuery = $conn->query("SELECT * FROM bordas;");
 
 $bordas = $bordasQuery->fetchAll();
 
+$tamanhosQuery = $conn->query("SELECT * FROM tamanhos;");
+
+$tamanhos = $tamanhosQuery->fetchAll();
+
 $massasQuery = $conn->query("SELECT * FROM massas;");
 
 $massas = $massasQuery->fetchAll();
@@ -25,6 +29,7 @@ $sabores = $saboresQuery->fetchAll();
     $data = $_POST;
     
     $borda = $data["borda"];
+    $tamanho = $data["tamanho"];
     $massa = $data["massa"];
     $sabores = $data["sabores"];
 
@@ -34,9 +39,10 @@ $sabores = $saboresQuery->fetchAll();
         $_SESSION["status"] = "warning"; 
     } else {
         try {
-            // borda e massa da pizza
-            $stmt = $conn->prepare("INSERT INTO pizzas (borda_id, massa_id) VALUES (:borda, :massa)");
+            // borda, tamanhi e massa da pizza
+            $stmt = $conn->prepare("INSERT INTO pizzas (borda_id, massa_id, tamanho_id) VALUES (:borda, :massa, :tamanho)");
             $stmt->bindParam(":borda", $borda, PDO::PARAM_INT);
+            $stmt->bindParam(":tamanho", $tamanho, PDO::PARAM_INT);
             $stmt->bindParam(":massa", $massa, PDO::PARAM_INT);
             $stmt->execute();
 
